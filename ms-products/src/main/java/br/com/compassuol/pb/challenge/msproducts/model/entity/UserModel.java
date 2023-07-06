@@ -1,8 +1,6 @@
 package br.com.compassuol.pb.challenge.msproducts.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -32,7 +30,9 @@ public class UserModel {
     private String password;
 
     @Column(nullable = false)
-    private Set<Integer> roles;
+    @ManyToMany
+    @JoinTable(name = "tb_user_role")
+    private Set<RoleModel> roles;
 
     public UserModel() {
         this.id = UUID.randomUUID().toString();
