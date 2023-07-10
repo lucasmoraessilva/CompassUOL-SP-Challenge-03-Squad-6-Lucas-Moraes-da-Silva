@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ms-product
+    ports:
+      - "3306:3306"
+    volumes:
+      - "../database:/docker-entrypoint-initdb.d"
+  mysql-ms-notification:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ms-notification
+    ports:
+      - "3307:3306"
+  rabbitmq:
+    image: rabbitmq:3.9.29-management
+    restart: always
+    network_mode: "host"
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 80:80
+    environment:
+      - PMA_ARBITRARY=1
