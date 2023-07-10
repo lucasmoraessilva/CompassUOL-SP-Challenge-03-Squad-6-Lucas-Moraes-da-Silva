@@ -15,11 +15,11 @@ CREATE TABLE tb_category (
 );
 
 CREATE TABLE tb_product_category (
-    products_id VARCHAR(36),
-    categories_id VARCHAR(36),
-    CONSTRAINT fk_product_id FOREIGN KEY (products_id) REFERENCES tb_product(id),
-    CONSTRAINT fk_category_id FOREIGN KEY (categories_id) REFERENCES tb_category(id),
-    CONSTRAINT pk_product_category PRIMARY KEY (products_id,categories_id)
+    product_id VARCHAR(36),
+    category_id VARCHAR(36),
+    CONSTRAINT fk_product_id FOREIGN KEY (product_id) REFERENCES tb_product(id),
+    CONSTRAINT fk_category_id FOREIGN KEY (category_id) REFERENCES tb_category(id),
+    CONSTRAINT pk_product_category PRIMARY KEY (product_id,category_id)
 );
 
 CREATE TABLE tb_user (
